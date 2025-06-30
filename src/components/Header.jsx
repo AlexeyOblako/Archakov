@@ -1,7 +1,8 @@
 import logoSvg from '../assets/img/pizza-logo.svg'
 import {Link} from "react-router";
+import Search from "./Search/Search";
 
-function Header() {
+function Header({searchValue, setSearchValue}) {
     return (
         <div className="header">
             <div className="container">
@@ -49,6 +50,7 @@ function Header() {
                         </svg>
                         <span>3</span>
                     </Link>
+                    <Search searchValue={searchValue} setSearchValue={setSearchValue}/>
                 </div>
             </div>
         </div>
