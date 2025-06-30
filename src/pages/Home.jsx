@@ -13,6 +13,8 @@ const Home = () => {
         name: 'популярности',
         sortProperty: 'rating',
     });
+    const [orderType, setOrderType] = React.useState("asc");
+
 
 
 
@@ -21,14 +23,14 @@ const Home = () => {
         setIsLoading(true);
         fetch(`https://685a69ed9f6ef96111564553.mockapi.io/Items?${
             categoryID > 0 ? `category=${categoryID}` : ''
-        }&sortBy=${sort.sortProperty}&order=desc`
+        }&sortBy=${sort.sortProperty}&order=${orderType}`
             )
             .then(res => res.json())
             .then(arr => {setItems(arr);
                 setIsLoading(false);
             });
         window.scrollTo(0, 0);
-    }, [categoryID, sort]);
+    }, [categoryID, sort, orderType]);
 
 
 
@@ -38,6 +40,10 @@ const Home = () => {
                 <Categories value={categoryID}
                             onClickCategory={(i) => setCategoryID(i)}/>
                 <Sort value={sort} onClickSort={(i) => setSort(i)}/>
+            </div>
+            <div>
+            <button onClick={() => setOrderType('asc')}> ↑ </button>
+            <button onClick={() => setOrderType('desc')}> ↓ </button>
             </div>
             <h2 className="content__title">Все пиццы</h2>
             <div className="content__items">
