@@ -1,14 +1,12 @@
 import React from 'react';
 import style from './search.module.scss'
-import {SearchContext} from "../../App";
-const Search = () => {
+import krest from'../../assets/img/3669378_clear_ic_icon.svg'
 
-    const {searchValue, setSearchValue} = React.useContext(SearchContext);
-
+const Search = ({searchValue, setSearchValue}) => {
     return (<div>
         <input value={searchValue}
-            onChange={(event) =>
-            setSearchValue(event.target.value)}
+            onChange={event =>
+            setSearchValue()}
                className={style.root}
                placeholder="Поиск пиццы..."/>
         {searchValue &&

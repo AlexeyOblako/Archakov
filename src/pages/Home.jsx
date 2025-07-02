@@ -6,11 +6,9 @@ import Sort from "../components/Sort";
 import Skeleton from "../components/PizzaBlock/Skeleton";
 import PizzaBlock from "../components/PizzaBlock/PizzaBlock";
 import Pagination from "../components/Pagination/Pagination";
-import {SearchContext} from "../App";
 
-const Home = () => {
-    const {searchValue} = React.useContext(SearchContext);
 
+const Home = ({searchValue}) => {
     const [items, setItems] = React.useState([]);
     const [isLoading, setIsLoading] = React.useState(true);
     const [categoryID, setCategoryID] = React.useState(0);
@@ -44,7 +42,7 @@ const Home = () => {
                 setIsLoading(false);
             });
         window.scrollTo(0, 0);
-    }, [categoryID, sort, searchValue, orderType, currentPage]);
+    }, [categoryID, sort, searchValue, orderType]);
 
 
     return (
