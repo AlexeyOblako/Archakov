@@ -11,6 +11,7 @@ function Sort() {
         {name: 'цене', sortProperty: 'price'},
         {name: 'названию', sortProperty: 'title'}
     ];
+    const sortRef = React.useRef('');
 
 
     const onClickListItem = (obj) => {
@@ -18,9 +19,22 @@ function Sort() {
         setOpen(false);
     }
 
+    React.useEffect(() => {
+        const handleClickOutside =  (event) => {
+            if (!event.composedPath().includes(sortRef.current)) {
+                setOpen(false);
+            }
+        }
+
+        document.body.addEventListener('click',handleClickOutside);
+
+        return () => document.body.removeEventListener('click',handleClickOutside);
+        }, []);
+
 
     return (
-        <div className="sort">
+        <div ref = {sortRef}
+            className="sort">
             <div className="sort__label">
                 <svg
                     width="10"
