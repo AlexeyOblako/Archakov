@@ -9,17 +9,15 @@ import Sort from "../components/Sort";
 import Skeleton from "../components/PizzaBlock/Skeleton";
 import PizzaBlock from "../components/PizzaBlock/PizzaBlock";
 import Pagination from "../components/Pagination/Pagination";
-import {setCategoryID, setCurrentPage, setFilters} from "../redux/slices/filterSlice";
-import {fetchPizza} from "../redux/slices/pizzaSlice";
+import {selectFilter, setCategoryID, setCurrentPage, setFilters} from "../redux/slices/filterSlice";
+import {fetchPizza, selectPizzaData} from "../redux/slices/pizzaSlice";
 
 
-const Home = ({searchValue}) => {
+const Home = () => {
 
     const dispatch = useDispatch();
-    const categoryID = useSelector(state => state.filter.categoryID);
-    const sortType = useSelector(state => state.filter.sort.sortProperty)
-    const currentPage = useSelector(state => state.filter.currentPage);
-    const {items, status} = useSelector(state => state.pizza);
+    const {categoryID, sortType, currentPage, searchValue} = useSelector(selectFilter);
+    const {items, status} = useSelector(selectPizzaData);
 
 
     const navigate = useNavigate();
@@ -63,7 +61,7 @@ const Home = ({searchValue}) => {
     React.useEffect(() => {
         getPizzas()
 
-    }, []);
+    }, [categoryID, sortType, searchValue, orderType, currentPage]);
 
 
     React.useEffect(() => {

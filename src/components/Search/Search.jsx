@@ -2,14 +2,18 @@ import React from 'react';
 import style from './search.module.scss';
 import debounce from 'lodash.debounce';
 import krest from'../../assets/img/3669378_clear_ic_icon.svg'
+import {useDispatch} from "react-redux";
+import {setSearchValue} from "../../redux/slices/filterSlice";
 
-const Search = ({setSearchValue}) => {
+const Search = () => {
+
+    const dispatch = useDispatch();
 
     const [value, setValue] = React.useState('');
 
     const updateSearchValue = React.useCallback(
         debounce(str => {
-            setSearchValue(str);
+            dispatch(setSearchValue(str));
         }, 700),
         [],
     );
@@ -21,7 +25,7 @@ const Search = ({setSearchValue}) => {
     };
 
     const onClickClear = () => {
-        setSearchValue('');
+        dispatch(setSearchValue(''));
         setValue('')
     }
 
