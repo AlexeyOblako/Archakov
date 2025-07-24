@@ -5,6 +5,8 @@ import Cart from './pages/Cart';
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import {Route, Routes} from "react-router";
+import FullPizza from "./pages/FullPizza";
+import MainLayout from "./layouts/MainLayout";
 
 function App() {
 
@@ -15,9 +17,12 @@ function App() {
             <div className="content">
 
                 <Routes>
-                    <Route path="/" element={<Home />}/>
-                    <Route path="/cart.html" element={<Cart/>}/>
-                    <Route path="*" element={<NotFound/>}/>
+                    <Route path="/" component={<MainLayout/>} >
+                        <Route path="/" element={<Home />}/>
+                        <Route path="/cart.html" element={<Cart/>}/>
+                        <Route path="/pizza/:id" element={<FullPizza />}/>
+                        <Route path="*" element={<NotFound/>}/>
+                    </Route>
                 </Routes>
 
 

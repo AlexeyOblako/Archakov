@@ -2,7 +2,7 @@ import React from 'react';
 import ReactPaginate from 'react-paginate';
 import {useSelector, useDispatch} from 'react-redux';
 import qs from 'qs';
-import {useNavigate} from "react-router";
+import {Link, useNavigate} from "react-router";
 
 import Categories from "../components/Categories";
 import Sort from "../components/Sort";
@@ -55,7 +55,8 @@ const Home = () => {
         window.scrollTo(0, 0);
     }
 
-    const pizzas = items.map((obj) => <PizzaBlock key={obj.id} {...obj} />)
+    const pizzas = items.map((obj) => <Link key={obj.id} to={`/pizza/${obj.id}`}>
+        <PizzaBlock {...obj} /></Link>)
 
 
     React.useEffect(() => {
