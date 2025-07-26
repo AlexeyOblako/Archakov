@@ -2,9 +2,9 @@ import React from 'react';
 import {useNavigate, useParams} from "react-router";
 import axios from "axios";
 
-const FullPizza = () => {
+const FullPizza: React.FC = () => {
     const {id} = useParams();
-    const [pizza, setPizza] = React.useState();
+    const [pizza, setPizza] = React.useState<{imageUrl: string, title: string, price: number}>();
     const navigate = useNavigate();
 
     React.useEffect(() => {
@@ -39,9 +39,6 @@ const FullPizza = () => {
                      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' // Тень для красоты
                  }} />
             <h2>{pizza.title}</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque deleniti dolorem dolores eos incidunt
-                molestiae vero! Asperiores blanditiis deserunt, enim, ex magnam mollitia nobis optio praesentium
-                reiciendis sapiente sint temporibus!</p>
             <h2>{pizza.price}</h2>
         </div>
     );

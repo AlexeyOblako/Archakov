@@ -12,12 +12,9 @@ function App() {
 
 
     return (
-        <div className="wrapper">
-            <Header />
-            <div className="content">
 
                 <Routes>
-                    <Route path="/" component={<MainLayout/>} >
+                    <Route path="/" element={<MainLayout/>} >
                         <Route path="/" element={<Home />}/>
                         <Route path="/cart.html" element={<Cart/>}/>
                         <Route path="/pizza/:id" element={<FullPizza />}/>
@@ -26,8 +23,7 @@ function App() {
                 </Routes>
 
 
-            </div>
-        </div>
+
     );
 }
 

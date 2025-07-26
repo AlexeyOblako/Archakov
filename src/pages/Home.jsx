@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactPaginate from 'react-paginate';
 import {useSelector, useDispatch} from 'react-redux';
 import qs from 'qs';
 import {Link, useNavigate} from "react-router";
@@ -9,7 +8,7 @@ import Sort from "../components/Sort";
 import Skeleton from "../components/PizzaBlock/Skeleton";
 import PizzaBlock from "../components/PizzaBlock/PizzaBlock";
 import Pagination from "../components/Pagination/Pagination";
-import {selectFilter, setCategoryID, setCurrentPage, setFilters} from "../redux/slices/filterSlice";
+import {selectFilter, setCategoryID, setCurrentPage} from "../redux/slices/filterSlice";
 import {fetchPizza, selectPizzaData} from "../redux/slices/pizzaSlice";
 
 
