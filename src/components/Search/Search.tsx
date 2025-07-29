@@ -5,21 +5,21 @@ import krest from'../../assets/img/3669378_clear_ic_icon.svg'
 import {useDispatch} from "react-redux";
 import {setSearchValue} from "../../redux/slices/filterSlice";
 
-const Search = () => {
+const Search: React.FC = () => {
 
     const dispatch = useDispatch();
 
     const [value, setValue] = React.useState('');
 
     const updateSearchValue = React.useCallback(
-        debounce(str => {
+        debounce((str: string) => {
             dispatch(setSearchValue(str));
         }, 700),
         [],
     );
 
 
-    const onChangeInput = (event) => {
+    const onChangeInput = (event: any) => {
         setValue(event.target.value);
         updateSearchValue(event.target.value);
     };

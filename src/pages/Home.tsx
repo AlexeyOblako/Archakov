@@ -12,7 +12,7 @@ import {selectFilter, setCategoryID, setCurrentPage} from "../redux/slices/filte
 import {fetchPizza, selectPizzaData} from "../redux/slices/pizzaSlice";
 
 
-const Home = () => {
+const Home: React.FC = () => {
 
     const dispatch = useDispatch();
     const {categoryID, sortType, currentPage, searchValue} = useSelector(selectFilter);
@@ -21,13 +21,13 @@ const Home = () => {
 
     const navigate = useNavigate();
 
-    const onClickCategory = (id) => {
+    const onClickCategory = (id: number) => {
         dispatch(setCategoryID(id));
     }
 
     const [orderType, setOrderType] = React.useState("asc");
 
-    const onChangePage = number => {
+    const onChangePage = (number: number) => {
         dispatch(setCurrentPage(number));
     }
 
@@ -42,7 +42,9 @@ const Home = () => {
         const search = searchValue ? `&search=${searchValue}` : '';
 
 
-        dispatch(fetchPizza({
+        dispatch(
+            //@ts-ignore
+            fetchPizza({
             categoryID,
             sortType,
             search,
@@ -54,7 +56,7 @@ const Home = () => {
         window.scrollTo(0, 0);
     }
 
-    const pizzas = items.map((obj) => <Link key={obj.id} to={`/pizza/${obj.id}`}>
+    const pizzas = items.map((obj: any) => <Link key={obj.id} to={`/pizza/${obj.id}`}>
         <PizzaBlock {...obj} /></Link>)
 
 
@@ -77,7 +79,7 @@ const Home = () => {
         <div className="container">
             <div className="content__top">
                 <Categories value={categoryID}
-                            onClickCategory={(i) => onClickCategory(i)}/>
+                            onClickCategory={(i: number) => onClickCategory(i)}/>
                 <Sort/>
             </div>
             <div>
