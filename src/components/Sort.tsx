@@ -2,6 +2,9 @@ import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {selectSort, setSort} from "../redux/slices/filterSlice";
 
+type PopupClick = {
+}
+
 function Sort() {
     const dispatch = useDispatch();
     const sort = useSelector(selectSort)
