@@ -3,12 +3,18 @@ import {Link, useLocation} from "react-router";
 import Search from "./Search/Search";
 import {useSelector} from "react-redux";
 import {selectCart} from "../redux/slices/cartSlice";
+import React from "react";
 
 function Header() {
 
     const location = useLocation();
 
     const {items, totalPrice} = useSelector(selectCart)
+
+    React.useEffect(() =>{
+            const json = JSON.stringify(items)},
+        [items]);
+
 
     const totalCount = items.reduce((sum: number, item: any) => sum + item.count, 0);
     return (

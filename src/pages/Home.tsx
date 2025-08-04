@@ -22,9 +22,10 @@ const Home: React.FC = () => {
 
     const navigate = useNavigate();
 
-    const onClickCategory = (id: number) => {
-        dispatch(setCategoryID(id));
-    }
+    const onClickCategory = React.useCallback((id: number) => {
+        dispatch(setCategoryID(id))
+    }, []);
+
 
     const [orderType, setOrderType] = React.useState("asc");
 
@@ -56,8 +57,20 @@ const Home: React.FC = () => {
         window.scrollTo(0, 0);
     }
 
-    const pizzas = items.map((obj: any) => <Link key={obj.id} to={`/pizza/${obj.id}`}>
-        <PizzaBlock {...obj} /></Link>)
+    const pizzas = items.map((obj: any) => (
+        <Link
+            key={obj.id}
+            to={`/pizza/${obj.id}`}
+            onClick={(e) => {
+                // Если клик был на кнопке/селекторе — отменяем переход
+                if ((e.target as HTMLElement).closest('.button--add, .pizza-block__selector')) {
+                    e.preventDefault();
+                }
+            }}
+        >
+            <PizzaBlock {...obj} />
+        </Link>
+    ));
 
 
     React.useEffect(() => {

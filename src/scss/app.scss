@@ -196,7 +196,24 @@ body {
           svg {
             path:first-of-type {
               display: none;
+              border-color: #787878;
+
+              &:active{
+                transform: none;
+              }
+
+              &:hover {
+                background-color: transparent;
+              }
+
+              svg path {
+                fill: #787878;
+              }
             }
+          }
+
+          &--disabled {
+            opacity: 0.4;
           }
         }
 
