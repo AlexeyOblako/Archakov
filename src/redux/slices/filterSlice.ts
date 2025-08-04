@@ -11,7 +11,7 @@ const initialState: FilterSliceState = {
     }
 };
 
-type Sort = {
+export type Sort = {
     name: string;
     sortProperty: 'raiting' | 'price' | 'title';
 }
@@ -21,6 +21,7 @@ interface FilterSliceState {
     categoryID: number;
     currentPage: number;
     sort: Sort;
+    sortType?: undefined | string;
 }
 
 const filterSlice = createSlice({

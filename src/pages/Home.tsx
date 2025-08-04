@@ -10,11 +10,12 @@ import PizzaBlock from "../components/PizzaBlock/PizzaBlock";
 import Pagination from "../components/Pagination/Pagination";
 import {selectFilter, setCategoryID, setCurrentPage} from "../redux/slices/filterSlice";
 import {fetchPizza, selectPizzaData} from "../redux/slices/pizzaSlice";
+import {useAppDispatch} from "../redux/store";
 
 
 const Home: React.FC = () => {
 
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const {categoryID, sortType, currentPage, searchValue} = useSelector(selectFilter);
     const {items, status} = useSelector(selectPizzaData);
 
@@ -43,13 +44,12 @@ const Home: React.FC = () => {
 
 
         dispatch(
-            //@ts-ignore
             fetchPizza({
-            categoryID,
-            sortType,
+            categoryID: String(categoryID),
+            sortType: String(sortType),
             search,
             orderType,
-            currentPage
+            currentPage: String(currentPage),
         }),);
 
 

@@ -1,16 +1,17 @@
-@import '../variables.scss';
+@use '../variables.scss' as vars;
+@use '../mixins' as mix;
 
 .button {
   display: inline-block;
-  background-color: $orange;
+  background-color: vars.$orange;
   border-radius: 30px;
   padding: 10px 20px;
   min-width: 100px;
   text-align: center;
   cursor: pointer;
-  transition: background-color $duration ease-in-out, border-color $duration ease-in-out;
+  transition: background-color vars.$duration ease-in-out, border-color vars.$duration ease-in-out;
   border: 1px solid transparent;
-  @include noselect();
+  @include mix.noselect();
 
   &,
   span {
@@ -21,15 +22,15 @@
   span,
   path,
   svg {
-    transition: all $duration ease-in-out;
+    transition: all vars.$duration ease-in-out;
   }
 
   &:hover {
-    background-color: darken($orange, 8%);
+    background-color: darken(vars.$orange, 8%);
   }
 
   &:active {
-    background-color: darken($orange, 12%);
+    background-color: darken(vars.$orange, 12%);
     transform: translateY(1px);
   }
 
@@ -45,30 +46,30 @@
   }
 
   &--black {
-    background-color: $black;
+    background-color: vars.$black;
 
     &:hover,
     &:active {
-      background-color: lighten($color: $black, $amount: 10);
+      background-color: lighten($color: vars.$black, $amount: 10);
     }
   }
 
   &--outline {
     background-color: #fff;
-    border-color: $orange;
+    border-color: vars.$orange;
     &,
     span {
-      color: $orange;
+      color: vars.$orange;
     }
 
     svg {
       path {
-        fill: $orange;
+        fill: vars.$orange;
       }
     }
 
     &:hover {
-      background-color: $orange;
+      background-color: vars.$orange;
 
       &,
       span {
@@ -83,7 +84,7 @@
     }
 
     &:active {
-      background-color: darken($orange, 8%);
+      background-color: darken(vars.$orange, 8%);
     }
   }
 
@@ -108,14 +109,14 @@
     &:hover {
       i {
         background-color: #fff;
-        color: $orange;
+        color: vars.$orange;
       }
     }
 
     i {
       display: inline-block;
       border-radius: 30px;
-      background-color: $orange;
+      background-color: vars.$orange;
       color: #fff;
       font-weight: 600;
       width: 22px;
